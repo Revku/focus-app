@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigation from 'components/Navigation/Navigation';
 import Main from 'components/Main/Main';
+import Footer from 'components/Footer/Footer';
 import styles from './Home.module.scss';
 
 const Home = () => {
@@ -12,7 +13,9 @@ const Home = () => {
       <div className={styles.main}>
         <Main />
       </div>
-      <div />
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 };
