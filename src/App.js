@@ -1,8 +1,14 @@
 import React from 'react';
 import Navigation from 'components/Navigation/Navigation';
+import Main from 'components/Main/Main';
 
 const App = () => {
-  return <Navigation />;
+  return (
+    <div>
+      <Navigation />
+      <Main />
+    </div>
+  );
 };
 
 export default App;
