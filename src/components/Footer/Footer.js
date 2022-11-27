@@ -13,7 +13,9 @@ const Footer = () => {
       </p>
       <p className={styles.author}>
         Created by{' '}
-        <img src={revkuLogo} alt="Revku logo" className={styles.logo} />
+        <a href="https://revku.dev/" target="_blank" rel="noreferrer">
+          <img src={revkuLogo} alt="Revku logo" className={styles.logo} />
+        </a>
       </p>
     </div>
   );
