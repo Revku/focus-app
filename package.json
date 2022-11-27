@@ -9,13 +9,15 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +36,23 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.28.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-webpack-plugin": "^3.2.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.4",
+    "prettier": "^2.8.0",
+    "stylelint": "^14.15.0"
+  },
+  "lint-staged": {
+    "*": "prettier --ignore-unknown --write",
+    "*.css": "stylelint",
+    "*.scss": "stylelint --syntax=scss",
+    "*.js": "eslint --fix"
   }
 }
