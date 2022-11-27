@@ -25,6 +25,8 @@
   "rules": {
     "react/jsx-filename-extension": "off",
     "react/function-component-definition": "off",
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "no-shadow": "off",
+    "consistent-return": "off"
   }
 }
