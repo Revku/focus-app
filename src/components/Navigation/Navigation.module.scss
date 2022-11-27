@@ -1,0 +1,21 @@
+.wrapper {
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  height: 100px;
+}
+
+.icon {
+  width: 27px;
+  margin-left: 15px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+@media (min-width: 800px) {
+  .wrapper {
+    padding: 30px 60px;
+  }
+}
