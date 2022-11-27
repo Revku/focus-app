@@ -7,7 +7,7 @@ const Footer = () => {
     <div className={styles.wrapper}>
       <p className={styles.paragraph}>
         Focus Open Beta •{' '}
-        <a href="./github" className={styles.link}>
+        <a href="./github" target="_blank" className={styles.link}>
           View GitHub
         </a>
       </p>
