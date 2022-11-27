@@ -1,0 +1,15 @@
+@import 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap';
+@import 'styles/theme';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: $font, sans-serif;
+}
+
+body,
+html {
+  width: 100%;
+  min-height: 100vh;
+}

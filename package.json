@@ -52,7 +52,7 @@
   "lint-staged": {
     "*": "prettier --ignore-unknown --write",
     "*.css": "stylelint",
-    "*.scss": "stylelint --syntax=scss",
+    "*.scss": "stylelint",
     "*.js": "eslint --fix"
   }
 }
