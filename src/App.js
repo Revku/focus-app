@@ -1,12 +1,10 @@
 import React from 'react';
-import Navigation from 'components/Navigation/Navigation';
-import Main from 'components/Main/Main';
+import Home from 'components/Home/Home';
 
 const App = () => {
   return (
     <div>
-      <Navigation />
-      <Main />
+      <Home />
     </div>
   );
 };
