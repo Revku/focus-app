@@ -72,7 +72,9 @@ const Main = () => {
         <p className={styles.timer}>{timer}</p>
         <button
           type="button"
-          className={button.normal}
+          className={`${styles.actionButton} ${
+            isActive ? button.ghost : button.normal
+          }`}
           onClick={() => setIsActive(!isActive)}
         >
           {buttonText}

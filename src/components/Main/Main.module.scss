@@ -33,6 +33,11 @@
   justify-content: center;
 }
 
+.actionButton {
+  font-size: 17px;
+  padding: 8px 50px;
+}
+
 @media (min-width: 800px) {
   .wrapper {
     flex-direction: column-reverse;
