@@ -1,6 +1,6 @@
 import React from 'react';
 
-import logo from 'images/focus-logo.svg';
+import logo from 'images/focusbeta-logo.svg';
 import themesIcon from 'images/icons/themes-icon.svg';
 import settingsIcon from 'images/icons/settings-icon.svg';
 
