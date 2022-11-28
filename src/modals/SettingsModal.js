@@ -1,16 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { AnimatePresence } from 'framer-motion';
 import Modal from 'components/Modal/Modal';
 
 const SettingsModal = ({ status, setStatus }) => {
   return (
-    <div>
+    <AnimatePresence
+      initial={false}
+      exitBeforeEnter={true}
+      onExitComplete={() => null}
+    >
       {status && (
         <Modal setStatus={setStatus} title="Settings">
           <div />
         </Modal>
       )}
-    </div>
+    </AnimatePresence>
   );
 };
 

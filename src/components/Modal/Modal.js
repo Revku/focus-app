@@ -1,11 +1,17 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import closeIcon from 'images/icons/close-icon.svg';
 import styles from './Modal.module.scss';
 
 const Modal = ({ children, title, setStatus }) => {
   return (
-    <div className={styles.wrapper}>
+    <motion.div
+      onClick={(e) => e.stopPropagation()}
+      className={styles.wrapper}
+      animate={{ opacity: 1, duration: 0.2 }}
+      exit={{ opacity: 0, duration: 0.2 }}
+    >
       <div className={styles.modal}>
         <div className={styles.header}>
           <h2 className={styles.title}>{title}</h2>
@@ -18,7 +24,7 @@ const Modal = ({ children, title, setStatus }) => {
         </div>
         <div>{children}</div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
