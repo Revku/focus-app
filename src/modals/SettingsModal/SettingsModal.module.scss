@@ -1,0 +1,44 @@
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+}
+
+.timers {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+.input {
+  padding: 7px 10px;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  margin: 5px 0;
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.suffix {
+  font-size: 13px;
+  font-weight: 500;
+  text-align: right;
+  color: #ebebeb;
+}
+
+.footer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 800px) {
+  .timers {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}

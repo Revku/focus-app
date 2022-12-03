@@ -4,7 +4,7 @@ import logo from 'images/focusbeta-logo.svg';
 import themesIcon from 'images/icons/themes-icon.svg';
 import settingsIcon from 'images/icons/settings-icon.svg';
 
-import SettingsModal from 'modals/SettingsModal';
+import SettingsModal from 'modals/SettingsModal/SettingsModal';
 import styles from './Navigation.module.scss';
 
 const Navigation = () => {
