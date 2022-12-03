@@ -12,7 +12,7 @@ const Main = () => {
     longbreak: settings.timers.longbreak,
   };
 
-  const [active, setActive] = React.useState('pomodoro');
+  const [active, setActive] = React.useState(modes.pomodoro);
   const [timer, setTimer] = React.useState('00:00');
   const [isActive, setIsActive] = React.useState(false);
   const [secondsLeft, setSecondsLeft] = React.useState(modes.pomodoro * 60);
@@ -26,13 +26,13 @@ const Main = () => {
 
   React.useEffect(() => {
     switch (active) {
-      case 'pomodoro':
+      case modes.pomodoro:
         setSecondsLeft(modes.pomodoro * 60);
         break;
-      case 'shortbreak':
+      case modes.shortbreak:
         setSecondsLeft(modes.shortbreak * 60);
         break;
-      case 'longbreak':
+      case modes.longbreak:
         setSecondsLeft(modes.longbreak * 60);
         break;
       default:
@@ -41,7 +41,7 @@ const Main = () => {
     }
 
     setIsActive(false);
-  }, [active]);
+  }, [active, secondsLeft === 0]);
 
   React.useEffect(() => {
     if (isActive) {
@@ -63,7 +63,7 @@ const Main = () => {
     if (isActive === false) {
       setButtonText('start');
     }
-  }, [isActive]);
+  }, [isActive, secondsLeft]);
 
   React.useEffect(() => {
     setTimer(formatTimeLeft(secondsLeft));
@@ -87,28 +87,28 @@ const Main = () => {
       <div className={styles.buttons}>
         <button
           type="button"
-          className={`${active === 'pomodoro' ? button.normal : button.ghost} ${
-            styles.button
-          }`}
-          onClick={() => setActive('pomodoro')}
+          className={`${
+            active === modes.pomodoro ? button.normal : button.ghost
+          } ${styles.button}`}
+          onClick={() => setActive(modes.pomodoro)}
         >
           pomodoro
         </button>
         <button
           type="button"
           className={`${
-            active === 'shortbreak' ? button.normal : button.ghost
+            active === modes.shortbreak ? button.normal : button.ghost
           } ${styles.button}`}
-          onClick={() => setActive('shortbreak')}
+          onClick={() => setActive(modes.shortbreak)}
         >
           short break
         </button>
         <button
           type="button"
           className={`${
-            active === 'longbreak' ? button.normal : button.ghost
+            active === modes.longbreak ? button.normal : button.ghost
           } ${styles.button}`}
-          onClick={() => setActive('longbreak')}
+          onClick={() => setActive(modes.longbreak)}
         >
           long break
         </button>
