@@ -14,6 +14,10 @@
   display: inline-block;
 }
 
+.themeIcon {
+  cursor: not-allowed;
+}
+
 @media (min-width: 800px) {
   .wrapper {
     padding: 30px 60px;

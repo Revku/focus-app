@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactTooltip from 'react-tooltip';
 
 import logo from 'images/focusbeta-logo.svg';
 import themesIcon from 'images/icons/themes-icon.svg';
@@ -17,7 +18,13 @@ const Navigation = () => {
       </a>
 
       <div>
-        <img src={themesIcon} alt="Themes" className={styles.icon} />
+        <img
+          src={themesIcon}
+          alt="Themes"
+          className={`${styles.icon} ${styles.themeIcon}`}
+          data-tip="Themes are not available in this version"
+        />
+        <ReactTooltip place="left" type="error" effect="solid" />
         <img
           src={settingsIcon}
           alt="Settings"
