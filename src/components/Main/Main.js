@@ -1,12 +1,15 @@
 import React from 'react';
 import button from 'components/Button/Button.module.scss';
+import useSettings from 'hooks/useSettings';
 import styles from './Main.module.scss';
 
 const Main = () => {
+  const settings = useSettings();
+
   const modes = {
-    pomodoro: 25,
-    shortbreak: 5,
-    longbreak: 20,
+    pomodoro: settings.timers.pomodoro,
+    shortbreak: settings.timers.shortbreak,
+    longbreak: settings.timers.longbreak,
   };
 
   const [active, setActive] = React.useState('pomodoro');
@@ -72,7 +75,9 @@ const Main = () => {
         <p className={styles.timer}>{timer}</p>
         <button
           type="button"
-          className={button.normal}
+          className={`${styles.actionButton} ${
+            isActive ? button.ghost : button.normal
+          }`}
           onClick={() => setIsActive(!isActive)}
         >
           {buttonText}
