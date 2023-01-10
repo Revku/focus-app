@@ -33,6 +33,7 @@
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "react/jsx-boolean-value": "off",
     "radix": "off",
+    "default-param-last": "off",
     "jsx-a11y/label-has-associated-control": [
       "error",
       {
