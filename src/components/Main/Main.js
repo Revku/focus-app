@@ -1,21 +1,23 @@
 import React from 'react';
 import button from 'components/Button/Button.module.scss';
-import useSettings from 'hooks/useSettings';
+import { useSelector } from 'react-redux';
 import styles from './Main.module.scss';
 
 const Main = () => {
-  const settings = useSettings();
+  const settings = useSelector((state) => state.settings);
 
   const modes = {
-    pomodoro: settings.timers.pomodoro,
-    shortbreak: settings.timers.shortbreak,
-    longbreak: settings.timers.longbreak,
+    pomodoro: { id: 'pomodoro', duration: settings.timers.pomodoro },
+    shortbreak: { id: 'shortbreak', duration: settings.timers.shortbreak },
+    longbreak: { id: 'longbreak', duration: settings.timers.longbreak },
   };
 
   const [active, setActive] = React.useState(modes.pomodoro);
   const [timer, setTimer] = React.useState('00:00');
   const [isActive, setIsActive] = React.useState(false);
-  const [secondsLeft, setSecondsLeft] = React.useState(modes.pomodoro * 60);
+  const [secondsLeft, setSecondsLeft] = React.useState(
+    modes.pomodoro.duration * 60
+  );
   const [buttonText, setButtonText] = React.useState('start');
 
   const formatTimeLeft = (seconds) => {
@@ -25,18 +27,22 @@ const Main = () => {
   };
 
   React.useEffect(() => {
-    switch (active) {
-      case modes.pomodoro:
-        setSecondsLeft(modes.pomodoro * 60);
+    setActive(modes.pomodoro);
+  }, [settings]);
+
+  React.useEffect(() => {
+    switch (active.id) {
+      case modes.pomodoro.id:
+        setSecondsLeft(modes.pomodoro.duration * 60);
         break;
-      case modes.shortbreak:
-        setSecondsLeft(modes.shortbreak * 60);
+      case modes.shortbreak.id:
+        setSecondsLeft(modes.shortbreak.duration * 60);
         break;
-      case modes.longbreak:
-        setSecondsLeft(modes.longbreak * 60);
+      case modes.longbreak.id:
+        setSecondsLeft(modes.longbreak.duration * 60);
         break;
       default:
-        setSecondsLeft(modes.pomodoro * 60);
+        setSecondsLeft(modes.pomodoro.duration * 60);
         break;
     }
 
@@ -88,7 +94,7 @@ const Main = () => {
         <button
           type="button"
           className={`${
-            active === modes.pomodoro ? button.normal : button.ghost
+            active.id === modes.pomodoro.id ? button.normal : button.ghost
           } ${styles.button}`}
           onClick={() => setActive(modes.pomodoro)}
         >
@@ -97,7 +103,7 @@ const Main = () => {
         <button
           type="button"
           className={`${
-            active === modes.shortbreak ? button.normal : button.ghost
+            active.id === modes.shortbreak.id ? button.normal : button.ghost
           } ${styles.button}`}
           onClick={() => setActive(modes.shortbreak)}
         >
@@ -106,7 +112,7 @@ const Main = () => {
         <button
           type="button"
           className={`${
-            active === modes.longbreak ? button.normal : button.ghost
+            active.id === modes.longbreak.id ? button.normal : button.ghost
           } ${styles.button}`}
           onClick={() => setActive(modes.longbreak)}
         >

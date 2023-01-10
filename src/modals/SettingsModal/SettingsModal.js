@@ -1,14 +1,15 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { AnimatePresence } from 'framer-motion';
 import Modal from 'components/Modal/Modal';
-import saveSettings from 'hooks/saveSettings';
 import button from 'components/Button/Button.module.scss';
-import useSettings from 'hooks/useSettings';
+import { updateSettings } from 'store';
 import styles from './SettingsModal.module.scss';
 
 const SettingsModal = ({ status, setStatus }) => {
-  const settings = useSettings();
+  const settings = useSelector((state) => state.settings);
+  const dispatch = useDispatch();
 
   const [pomodoro, setPomodoro] = React.useState(settings.timers.pomodoro);
   const [shortbreak, setShortbreak] = React.useState(
@@ -17,16 +18,14 @@ const SettingsModal = ({ status, setStatus }) => {
   const [longbreak, setLongbreak] = React.useState(settings.timers.longbreak);
 
   const handleSave = () => {
-    settings.timers = {
+    const timers = {
       pomodoro: parseInt(pomodoro),
       shortbreak: parseInt(shortbreak),
       longbreak: parseInt(longbreak),
     };
 
-    saveSettings(settings);
     setStatus(false);
-    // Temponary resolution
-    location.reload();
+    dispatch(updateSettings({ ...settings, timers }));
   };
 
   return (
