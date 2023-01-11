@@ -45,6 +45,7 @@ const SettingsModal = ({ status, setStatus }) => {
                 className={styles.input}
                 type="number"
                 id="pomodoro"
+                min={1}
                 placeholder="25"
                 value={pomodoro}
                 onChange={(event) => setPomodoro(event.target.value)}
@@ -60,6 +61,7 @@ const SettingsModal = ({ status, setStatus }) => {
                 className={styles.input}
                 type="number"
                 id="shortbreak"
+                min={1}
                 placeholder="5"
                 value={shortbreak}
                 onChange={(event) => setShortbreak(event.target.value)}
@@ -74,6 +76,7 @@ const SettingsModal = ({ status, setStatus }) => {
               <input
                 className={styles.input}
                 type="number"
+                min={1}
                 id="longbreak"
                 placeholder="15"
                 value={longbreak}
