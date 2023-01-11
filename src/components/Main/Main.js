@@ -1,10 +1,13 @@
 import React from 'react';
 import button from 'components/Button/Button.module.scss';
 import { useSelector } from 'react-redux';
+import NotificationSound from 'assets/notification.wav';
+
 import styles from './Main.module.scss';
 
 const Main = () => {
   const settings = useSelector((state) => state.settings);
+  const [audio] = React.useState(new Audio(NotificationSound));
 
   const modes = {
     pomodoro: { id: 'pomodoro', duration: settings.timers.pomodoro },
@@ -60,6 +63,7 @@ const Main = () => {
       if (secondsLeft === 0) {
         clearInterval(interval);
         setIsActive(false);
+        audio.play();
         setButtonText('start');
       }
 
