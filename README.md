@@ -23,7 +23,7 @@ An application based on the pomodoro technique to help you focus on doing your t
 
 ## 📋 Roadmap
 
-- [ ] Add timer end sound
+- [x] Add timer end sound
 - [ ] Add themes modal
 - [ ] Add to do list modal
 - [ ] Add local sessions stats
