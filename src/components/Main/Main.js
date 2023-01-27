@@ -11,8 +11,8 @@ const Main = () => {
 
   const modes = {
     pomodoro: { id: 'pomodoro', duration: settings.timers.pomodoro },
-    shortbreak: { id: 'shortbreak', duration: settings.timers.shortbreak },
-    longbreak: { id: 'longbreak', duration: settings.timers.longbreak },
+    shortbreak: { id: 'short break', duration: settings.timers.shortbreak },
+    longbreak: { id: 'long break', duration: settings.timers.longbreak },
   };
 
   const [active, setActive] = React.useState(modes.pomodoro);
@@ -49,16 +49,19 @@ const Main = () => {
         break;
     }
 
+    document.title = `Focus - just get it done!`;
     setIsActive(false);
   }, [active, secondsLeft === 0]);
 
   React.useEffect(() => {
     if (isActive) {
-      const interval = setInterval(
-        () => setSecondsLeft((secondsLeft) => secondsLeft - 1),
-        1000
-      );
-      setButtonText('stop');
+      const interval = setInterval(() => {
+        setSecondsLeft((secondsLeft) => secondsLeft - 1);
+        document.title = `${formatTimeLeft(secondsLeft - 1)} • Focus Mode (${
+          active.id
+        })`;
+      }, 1000);
+      setButtonText('pause');
 
       if (secondsLeft === 0) {
         clearInterval(interval);
