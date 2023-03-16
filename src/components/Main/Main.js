@@ -9,6 +9,8 @@ const Main = () => {
   const settings = useSelector((state) => state.settings);
   const [audio] = React.useState(new Audio(NotificationSound));
 
+  const voidAnimation = () => {};
+
   const modes = {
     pomodoro: { id: 'pomodoro', duration: settings.timers.pomodoro },
     shortbreak: { id: 'short break', duration: settings.timers.shortbreak },
@@ -53,13 +55,15 @@ const Main = () => {
     setIsActive(false);
   }, [active, secondsLeft === 0]);
 
+  const step = () => {
+    setSecondsLeft((secondsLeft) => secondsLeft - 1);
+  };
+
   React.useEffect(() => {
     if (isActive) {
+      document.title = `Focus Mode • ${active.duration} minutes (${active.id})`;
       const interval = setInterval(() => {
-        setSecondsLeft((secondsLeft) => secondsLeft - 1);
-        document.title = `${formatTimeLeft(secondsLeft - 1)} • Focus Mode (${
-          active.id
-        })`;
+        requestAnimationFrame(step);
       }, 1000);
       setButtonText('pause');
 
@@ -74,6 +78,7 @@ const Main = () => {
     }
 
     if (isActive === false) {
+      document.title = `Focus - just get it done!`;
       setButtonText('start');
     }
   }, [isActive, secondsLeft]);
